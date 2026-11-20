@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>GameVault — современные игры</title>
+
+  <!-- Open Graph теги для красивых ссылок в соцсетях -->
+  <meta property="og:title" content="GameVault — современные игры" />
+  <meta property="og:description" content="Картинки, пересказ сюжета и технические требования в одном месте." />
+  <meta property="og:type" content="website" />
+  <!-- Ссылка на картинку-превью. ОБЯЗАТЕЛЬНО замените "ВАШ-НИКНЕЙМ" на ваш ник на GitHub, когда загрузите сайт! -->
+  <meta property="og:image" content="https://wortezilor.github.io/my-games-site/images/bg.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Игра — GameVault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">🎮 GameVault</a>
+    <a href="index.html" class="back-link">← На главную</a>
+  </header>
+
+  <main class="container" id="gamePage">
+    <p class="loading">Загрузка...</p>
+  </main>
+
+   <footer class="site-footer">
+    <p>© 2025 GameVault — учебный проект. Все изображения принадлежат правообладателям.</p>
+    <p style="margin-top: 10px;">
+      <a href="https://www.twitch.tv/wortezilor" target="_blank" rel="noopener noreferrer" style="color: #9146FF; font-weight: 500; text-decoration: none;">Мои стримы на Twitch →</a>
+    </p>
+  </footer>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lb-close" aria-label="Закрыть">✕</button>
+    <button class="lb-prev" aria-label="Назад">‹</button>
+    <img id="lightboxImg" src="" alt="Просмотр" />
+    <button class="lb-next" aria-label="Вперёд">›</button>
+  </div>
+
+  <script src="data/games.js"></script>
+    <!-- Кнопка наверх -->
+  <button id="scrollTopBtn" class="scroll-top" title="Наверх">↑</button>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("id");
+    const game = games.find(g => g.id === gameId);
+    const container = document.getElementById("gamePage");
+
+    if (!game) {
+      container.innerHTML = `<p class="no-results">Игра не найдена. <a href="index.html">На главную</a></p>`;
+    } else {
+      document.title = game.title + " — GameVault";
+
+      const platformTags = game.platforms.map(p => `<span class="tag">${p}</span>`).join("");
+
+      // Скриншоты: если нет картинки, она просто скроется (не будет битой иконки)
+      const screenshots = game.screenshots.map((src, i) =>
+        `<img src="${src}" alt="Скриншот ${game.title}" 
+              data-index="${i}" class="lb-trigger" loading="lazy"
+              onerror="this.style.display='none'" />`
+      ).join("");
+
+      const reqRow = (obj) =>
+        Object.entries(obj).map(([k, v]) =>
+          `<tr><td>${k}</td><td>${v}</td></tr>`
+        ).join("");
+
+      // Трейлер через YouTube (работает локально)
+      let trailerBlock = "";
+      if (game.trailer) {
+        trailerBlock = `
+          <section>
+            <h2>Трейлер</h2>
+            <div class="video-wrap">
+              <iframe 
+                src="${game.trailer}" 
+                title="Трейлер ${game.title}"
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture;"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          </section>`;
+      }
+
+      container.innerHTML = `
+        <article class="game-detail">
+          <div class="detail-top">
+            <img class="detail-cover lb-trigger" 
+                 src="${game.cover}" 
+                 alt="${game.title}" 
+                 data-cover="1"
+                 onerror="this.style.display='none'" />
+            <div class="detail-info">
+              <h1>${game.title}</h1>
+              <p class="meta">${game.genre} • ${game.developer}</p>
+              <p class="release">Дата выхода: ${game.releaseDate}</p>
+              <div class="platforms">${platformTags}</div>
+              <p class="short-desc">${game.shortDescription}</p>
+            </div>
+          </div>
+
+          <section class="screenshots">
+            <h2>Скриншоты <small>(кликните, чтобы увеличить)</small></h2>
+            <div class="gallery">${screenshots}</div>
+          </section>
+
+          ${trailerBlock}
+
+          <section class="story">
+            <h2>О сюжете (кратко)</h2>
+            <p>${game.storyShort}</p>
+            <details>
+              <summary>Полный пересказ сюжета (осторожно, спойлеры)</summary>
+              <p>${game.storyFull}</p>
+            </details>
+          </section>
+
+          <section class="requirements">
+            <h2>Системные требования</h2>
+            <div class="req-grid">
+              <div>
+                <h3>Минимальные</h3>
+                <table>${reqRow(game.minRequirements)}</table>
+              </div>
+              <div>
+                <h3>Рекомендуемые</h3>
+                <table>${reqRow(game.recRequirements)}</table>
+              </div>
+            </div>
+          </section>
+        </article>
+      `;
+
+      // Лайтбокс
+      const allImages = [game.cover, ...game.screenshots];
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      let currentIdx = 0;
+
+      function openLightbox(index) {
+        if (!allImages[index]) return;
+        currentIdx = index;
+        lightboxImg.src = allImages[currentIdx];
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+      }
+      function closeLightbox() {
+        lightbox.hidden = true;
+        document.body.style.overflow = "";
+      }
+      function showPrev() {
+        if (!allImages.length) return;
+        currentIdx = (currentIdx - 1 + allImages.length) % allImages.length;
+        lightboxImg.src = allImages[currentIdx];
+      }
+      function showNext() {
+        if (!allImages.length) return;
+        currentIdx = (currentIdx + 1) % allImages.length;
+        lightboxImg.src = allImages[currentIdx];
+      }
+
+      document.querySelectorAll(".lb-trigger").forEach(el => {
+        el.addEventListener("click", () => {
+          const idx = el.dataset.cover === "1" ? 0 : parseInt(el.dataset.index, 10) + 1;
+          openLightbox(idx);
+        });
+      });
+
+      lightbox.querySelector(".lb-close").addEventListener("click", closeLightbox);
+      lightbox.querySelector(".lb-prev").addEventListener("click", showPrev);
+      lightbox.querySelector(".lb-next").addEventListener("click", showNext);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (lightbox.hidden) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") showPrev();
+        if (e.key === "ArrowRight") showNext();
+      });
+    }
+  </script>
+</body>
+</html>
