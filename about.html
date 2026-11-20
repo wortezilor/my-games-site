@@ -10,61 +10,29 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <header class="site-header">
     <a href="index.html" class="logo">GameVault</a>
     <p class="tagline">Обзоры, сюжеты и системные требования</p>
     <a href="index.html" class="back-link" style="margin-top: 10px;">← На главную</a>
   </header>
-
   <main class="container">
     <div class="about-card">
-      <!-- Аватарка. Если нет файла avatar.jpg в images, покажет заглушку -->
       <img src="images/avatar.jpg" alt="Аватар" class="about-avatar" onerror="this.src='https://placehold.co/200x200/1a0a2e/ffd280?text=Gamer'" />
-      
-      <!-- Здесь можно написать что угодно вместо имени -->
-      <h1>Привет! я геймер!</h1>
-      
-      <p class="about-text">
-        Я увлекаюсь современными видеоиграми и веб-разработкой. Этот сайт — мой учебный проект, где я собираю пересказы сюжетов, скриншоты и технические требования к самым крутым играм последних лет.
-      </p>
-      <p class="about-text">
-        Мне нравится исследовать открытые миры и сложные сюжеты. Надеюсь, вам понравится на моем сайте!
-      </p>
-
+      <h1>Ээээ я геймер</h1>
+      <p class="about-text">Я увлекаюсь современными видеоиграми и веб-разработкой. Этот сайт — мой учебный проект, где я собираю пересказы сюжетов, скриншоты и технические требования к самым крутым играм последних лет.</p>
+      <p class="about-text">Мне нравится исследовать открытые миры и сложные сюжеты. Надеюсь, вам понравится на моем сайте!</p>
       <div class="about-games">
         <h2>Мои любимые игры</h2>
         <div class="about-games-grid">
-          <!-- Названия файлов совпадают с теми, что вы кидали в папку images -->
-          <img src="images/rdr2.jpg" alt="Red Dead Redemption 2" title="Red Dead Redemption 2" onerror="this.style.display='none'" />
-          <img src="images/gta5.jpg" alt="Grand Theft Auto V" title="Grand Theft Auto V" onerror="this.style.display='none'" />
-          <img src="images/cyberpunk.jpg" alt="Cyberpunk 2077" title="Cyberpunk 2077" onerror="this.style.display='none'" />
+          <img src="images/rdr2.jpg" alt="RDR2" onerror="this.style.display='none'" />
+          <img src="images/gta5.jpg" alt="GTA V" onerror="this.style.display='none'" />
+          <img src="images/cyberpunk.jpg" alt="Cyberpunk" onerror="this.style.display='none'" />
         </div>
       </div>
     </div>
   </main>
-
-    <footer class="site-footer">
+  <footer class="site-footer">
     <p>© 2025 GameVault — учебный проект. Все изображения принадлежат правообладателям.</p>
-    <p style="margin-top: 10px;">
-      <a href="https://www.twitch.tv/wortezilor" target="_blank" rel="noopener noreferrer" style="color: #9146FF; font-weight: 500; text-decoration: none;">Мои стримы на Twitch →</a>
-    </p>
   </footer>
-  <!-- Кнопка наверх (скопирована сюда, чтобы работала и на этой странице) -->
-  <button id="scrollTopBtn" class="scroll-top" title="Наверх">↑</button>
-
-  <script>
-    // Логика кнопки наверх
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-    if (scrollTopBtn) {
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) scrollTopBtn.classList.add("show");
-        else scrollTopBtn.classList.remove("show");
-      });
-      scrollTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
-  </script>
 </body>
 </html>
