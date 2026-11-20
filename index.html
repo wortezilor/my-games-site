@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GameVault — современные игры</title>
-
-  <!-- Open Graph теги для красивых ссылок в соцсетях -->
+  
   <meta property="og:title" content="GameVault — современные игры" />
   <meta property="og:description" content="Картинки, пересказ сюжета и технические требования в одном месте." />
   <meta property="og:type" content="website" />
-  <!-- Ссылка на картинку-превью. ОБЯЗАТЕЛЬНО замените "ВАШ-НИКНЕЙМ" на ваш ник на GitHub, когда загрузите сайт! -->
   <meta property="og:image" content="https://wortezilor.github.io/my-games-site/images/bg.jpg" />
- <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GameVault — современные игры</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,9 +18,9 @@
 <body>
 
   <header class="site-header">
-    <a href="index.html" class="logo">🎮 GameVault</a>
+    <a href="index.html" class="logo">GameVault</a>
     <p class="tagline">Обзоры, сюжеты и системные требования</p>
-	    <a href="about.html" style="color: var(--gold); font-size: 0.9rem; text-decoration: none; margin-top: 10px; border-bottom: 1px solid var(--gold); display: inline-block;">Об авторе →</a>
+    <a href="about.html" class="back-link" style="margin-top: 10px;">Об авторе →</a>
   </header>
 
   <main class="container">
@@ -37,7 +35,7 @@
         placeholder="🔍 Поиск по названию..."
       />
 
-                 <div class="filters" id="filters">
+      <div class="filters" id="filters">
         <button class="filter-btn active" data-genre="all">Все</button>
         <button class="filter-btn" data-genre="RPG">RPG</button>
         <button class="filter-btn" data-genre="Экшен">Экшен</button>
@@ -48,12 +46,10 @@
         <button class="filter-btn" data-genre="Интерактивное кино">Интерактивное кино</button>
         <button class="filter-btn" data-genre="Хоррор">Хоррор</button>
         <button class="filter-btn" data-genre="Стелс">Стелс</button>
-        <!-- Добавили новые -->
         <button class="filter-btn" data-genre="Приключение">Приключение</button>
         <button class="filter-btn" data-genre="Выживание">Выживание</button>
       </div>
 
-      <!-- НОВЫЙ БЛОК: Сортировка -->
       <div class="sort-controls" style="margin-bottom: 24px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
         <span style="color: var(--text-dim); font-size: 0.9rem;">Сортировка:</span>
         <button class="filter-btn active sort-btn" data-sort="default">По умолчанию</button>
@@ -66,16 +62,26 @@
     <p id="noResults" class="no-results" hidden>Игр не найдено 😔</p>
   </main>
 
-    <footer class="site-footer">
+  <footer class="site-footer">
     <p>© 2025 GameVault — учебный проект. Все изображения принадлежат правообладателям.</p>
-    <p style="margin-top: 10px;">
-      <a href="https://www.twitch.tv/wortezilor" target="_blank" rel="noopener noreferrer" style="color: #9146FF; font-weight: 500; text-decoration: none;">Мои стримы на Twitch →</a>
-    </p>
+    <p style="margin-top: 10px;"><a href="https://www.twitch.tv/твой_ник" target="_blank" style="color: var(--gold); text-decoration: none;">Мои стримы на Twitch →</a></p>
   </footer>
 
-  <script src="data/games.js"></script>
-    <!-- Кнопка наверх -->
   <button id="scrollTopBtn" class="scroll-top" title="Наверх">↑</button>
+
+  <script src="data/games.js"></script>
   <script src="script.js"></script>
+  <script>
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    if (scrollTopBtn) {
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) scrollTopBtn.classList.add("show");
+        else scrollTopBtn.classList.remove("show");
+      });
+      scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+  </script>
 </body>
 </html>
