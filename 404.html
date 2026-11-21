@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Плана нет! (Страница не найдена)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="logo">GameVault</a>
+  </header>
+
+  <main class="container" style="display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; min-height: 60vh;">
+    <h1 style="font-size: 5rem; font-weight: 600; color: var(--gold); margin-bottom: 10px; text-shadow: 0 4px 15px rgba(255, 210, 128, 0.3);">404</h1>
+    <h2 style="font-size: 1.8rem; font-weight: 500; margin-bottom: 20px; color: #fff;">I have a plan!</h2>
+    
+    <!-- Картинка Датча. Если у тебя есть локальная картинка, замени ссылку на images/dutch.jpg -->
+    <img src="images/dutch.jpg" alt="Датч Ван дер Линде" 
+         style="width: 100%; max-width: 400px; border-radius: 12px; border: 2px solid var(--gold); margin-bottom: 30px; box-shadow: 0 8px 30px rgba(0,0,0,0.6);"
+         onerror="this.src='https://i.imgur.com/8Y6wJ3n.jpeg';" />
+         
+    <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin-bottom: 30px; line-height: 1.6;">
+      Но, похоже, плана по этой ссылке нет. Или игра была удалена, или ты просто оступился в прерии. 
+      <br><br>
+      <em>«У меня есть план, просто нажми на кнопку ниже...»</em>
+    </p>
+    
+    <a href="index.html" class="filter-btn active" style="text-decoration: none; font-size: 1.1rem; padding: 12px 30px;">
+      Вернуться на главную
+    </a>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 GameVault — учебный проект. Все изображения принадлежат правообладателям.</p>
+  </footer>
+</body>
+</html>
