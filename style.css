@@ -182,3 +182,118 @@ a { color: inherit; text-decoration: none; }
 .lb-prev { left: 24px; } .lb-next { right: 24px; }
 .lb-prev:hover, .lb-next:hover { background: var(--accent); border-color: var(--accent); }
 @media (max-width: 600px) { .lightbox { padding: 16px; } .lb-prev, .lb-next { width: 44px; height: 44px; font-size: 1.5rem; } .lb-close { width: 40px; height: 40px; top: 16px; right: 16px; } }
+/* =========================================
+   МОБИЛЬНАЯ ВЕРСИЯ (для экранов до 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* Шапка сайта */
+  .site-header { 
+    padding: 20px 5% 10px; 
+    align-items: center; /* Центрируем текст */
+    text-align: center;
+  }
+  .logo { 
+    font-size: 1.8rem; /* Уменьшаем логотип */
+  }
+  .tagline { 
+    font-size: 0.8rem; 
+    letter-spacing: 1px; 
+    border-left: none; /* Убираем полоску слева */
+    border-top: 2px solid var(--gold); /* Делаем полоску сверху */
+    padding-left: 0;
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+  
+  /* Главная страница (Заголовок) */
+  .hero h1 { 
+    font-size: 2rem; 
+    text-align: center;
+  }
+  .hero p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* Фильтры (кнопки) */
+  .filters { 
+    justify-content: center; /* Центрируем кнопки */
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .filter-btn { 
+    padding: 6px 12px; /* Уменьшаем кнопки */
+    font-size: 0.8rem; 
+  }
+  
+  /* Блок сортировки */
+  .sort-controls {
+    justify-content: center;
+    flex-direction: column; /* Ставим друг под другом */
+    align-items: center !important;
+  }
+
+  /* Сетка игр (карточки) */
+  .games-grid {
+    grid-template-columns: 1fr; /* Карточки в один столбец */
+    gap: 16px;
+  }
+  .card-cover img {
+    aspect-ratio: 16 / 9; /* Чуть сплющиваем обложки */
+  }
+
+  /* Страница игры */
+  .detail-top {
+    grid-template-columns: 1fr; /* Обложка и текст друг под другом */
+    gap: 16px;
+    text-align: center;
+  }
+  .detail-cover {
+    max-width: 250px;
+    margin: 0 auto; /* Центрируем обложку */
+  }
+  .platforms {
+    justify-content: center;
+  }
+
+  /* Таблицы требований */
+  .req-grid-three {
+    grid-template-columns: 1fr; /* Таблицы в один столбец */
+  }
+  
+  /* Галерея скриншотов */
+  .gallery {
+    grid-template-columns: 1fr; /* Скриншоты в один столбец */
+  }
+
+  /* Таблица (чтобы текст не вылезал) */
+  .req-grid-three td {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  /* Страница "Об авторе" */
+  .about-card {
+    padding: 20px;
+  }
+  .about-card h1 {
+    font-size: 1.5rem;
+  }
+  .about-text {
+    font-size: 1rem;
+  }
+  .about-avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* Кнопка наверх */
+  .scroll-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
