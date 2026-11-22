@@ -42,7 +42,7 @@ a { color: inherit; text-decoration: none; }
 .site-footer { text-align: center; padding: 24px; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.1); background: rgba(13, 2, 33, 0.8); backdrop-filter: blur(10px); }
 
 /* ===== ГЛАВНАЯ ===== */
-.hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 400; font-style: italic; margin-bottom: 8px; background: linear-gradient(90deg, #ffd6a5 0%, #ff2d78 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 4px 20px rgba(255, 45, 120, 0.3); letter-spacing: -0.5px; }
+.hero h1 { font-family: 'Jura', 'Inter', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; font-style: normal; margin-bottom: 8px; background: linear-gradient(90deg, #ffd6a5 0%, #ff2d78 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 4px 20px rgba(255, 45, 120, 0.3); letter-spacing: -0.5px; }
 .hero p { color: var(--text-dim); margin-bottom: 24px; font-weight: 400; font-size: 1.1rem; }
 
 .search-input { width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(26, 10, 46, 0.6); backdrop-filter: blur(10px); color: var(--text); font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; margin-bottom: 16px; transition: border-color 0.2s; }
